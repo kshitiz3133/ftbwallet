@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ftbwallet/Home/home.dart';
 
+import 'homePage.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'nothing-font',
       ),
-      home: Home(),
+      home: HomePage(),
     );
   }
 }
