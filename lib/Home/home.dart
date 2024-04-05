@@ -22,8 +22,8 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     // Replace 'http://127.0.0.1:7545' with your Ganache workspace URL
-    _client = Web3Client('http://127.0.0.1:7545', Client(), socketConnector: (){
-      return IOWebSocketChannel.connect('http://127.0.0.1:7545/').cast<String>();
+    _client = Web3Client('http://172.16.17.180:7545', Client(), socketConnector: (){
+      return IOWebSocketChannel.connect('http://172.16.17.180:7545/').cast<String>();
     });
     // Replace 1337 with your network ID
     // Replace '0x1234567890abcdef1234567890abcdef12345678' with your wallet address

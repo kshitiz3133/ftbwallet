@@ -5,6 +5,7 @@ import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 import 'Home/home.dart';
+import 'home2.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -32,8 +33,8 @@ class _HomePageState extends State<HomePage> {
           });
         },
         children: <Widget>[
-          Home(),
-          SecondPage(),
+          Home2(),
+          Home()
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
