@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ftbwallet/Authentication/Sign%20In/login.dart';
 import 'package:ftbwallet/Home/home.dart';
 
+import 'Home/send.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'nothing-font',
       ),
-      home: Login(),
+      home: Send(),
     );
   }
 }

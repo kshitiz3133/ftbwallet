@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart';
@@ -22,14 +23,37 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     // Replace 'http://127.0.0.1:7545' with your Ganache workspace URL
-    _client = Web3Client('http://127.0.0.1:7545', Client(), socketConnector: (){
-      return IOWebSocketChannel.connect('http://127.0.0.1:7545/').cast<String>();
+    _client = Web3Client('http://172.16.17.180:7545', Client(), socketConnector: (){
+      return IOWebSocketChannel.connect('http://172.16.17.180:7545/').cast<String>();
     });
     // Replace 1337 with your network ID
     // Replace '0x1234567890abcdef1234567890abcdef12345678' with your wallet address
     _walletAddress = EthereumAddress.fromHex('0x42c4205e15D50f156F44787b7035d67E1C9A18b9');
     _updateBalance();
   }
+
+  Future<void> sendToken() async {
+    try {
+      String privateKey = "0x69e0bdf0dfeb475b002a0743ea5b83afca34cd0d2258bed8e1020da53ed5c153";
+      Credentials credentials = await _client.credentialsFromPrivateKey(privateKey);
+      EthereumAddress ownAddress = EthereumAddress.fromHex("0x42c4205e15D50f156F44787b7035d67E1C9A18b9");
+      EthereumAddress receiverAddress = EthereumAddress.fromHex("0x37421ABa95edeCabe7DFf8AB39F45b75333C5A59");
+
+      Transaction transaction = Transaction(
+        from: ownAddress,
+        to: receiverAddress,
+        value: EtherAmount.fromUnitAndValue(EtherUnit.ether, 5),
+      );
+
+      await _client.sendTransaction(credentials, transaction);
+
+      print('ownAddress: ' + ownAddress.toString());
+      _updateBalance();
+    } catch (e) {
+      print("Error sending transaction: $e");
+    }
+  }
+
 
   Future<void> _updateBalance() async {
     EthereumAddress address = _walletAddress;
@@ -69,11 +93,14 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      height: 100,
-                      width: 150,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.black),
-                      child: Center(child: Text("Send", style: TextStyle(fontSize: 30, color: Colors.white))),
+                    GestureDetector(
+                      onTap:(){ sendToken();},
+                      child: Container(
+                        height: 100,
+                        width: 150,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.black),
+                        child: Center(child: Text("Send", style: TextStyle(fontSize: 30, color: Colors.white))),
+                      ),
                     ),
                     Container(
                       height: 100,
