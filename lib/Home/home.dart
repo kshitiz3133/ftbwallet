@@ -16,6 +16,8 @@ class _HomeState extends State<Home> {
   late EthereumAddress _walletAddress;
   String _balance = 'Loading...';
 
+
+
   @override
   void initState() {
     super.initState();
