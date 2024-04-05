@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             _currentPageIndex = index;
             _pageController.animateToPage(
               index,
-              duration: Duration(milliseconds: 500),
+              duration: Duration(milliseconds: 200),
               curve: Curves.easeInOut,
             );
           });
