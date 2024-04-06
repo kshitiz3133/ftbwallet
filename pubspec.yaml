@@ -39,6 +39,7 @@ dependencies:
   http:
   web_socket_channel:
   flutter_svg:
+  ussd_service: ^0.1.1
 
 dev_dependencies:
   flutter_test:

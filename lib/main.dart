@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ftbwallet/Authentication/Sign%20In/login.dart';
 import 'package:ftbwallet/Home/home.dart';
+import 'package:ftbwallet/functionalities/ussd.dart';
 import 'package:ftbwallet/homePage.dart';
 
 import 'Home/send.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'nothing-font',
       ),
-      home: Home(),
+      home: UssdMessage()
     );
   }
 }
