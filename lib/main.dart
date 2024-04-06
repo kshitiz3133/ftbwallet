@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'nothing-font',
       ),
-      home: Send(),
+      home: Home(),
     );
   }
 }
